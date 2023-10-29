@@ -1,6 +1,6 @@
 # Solana-Bootcamp-Final-Project2 - README
 
-Welcome to the **Solana-bootcamp-final-project2** project repository! This decentralized application (DApp) leverages blockchain technology to implement some actions on the Ethereum network. Participants can mint, transfer, burn
+Welcome to the **Solana-bootcamp-final-project2** project repository! This decentralized application (DApp) leverages blockchain technology to implement some actions on the Ethereum network. 
 
 ## Table of Contents
 
