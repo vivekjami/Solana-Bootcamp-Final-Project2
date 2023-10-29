@@ -16,10 +16,10 @@ Welcome to the **Solana-bootcamp-final-project2** project repository! This decen
 
 ## Overview
 
-The **Tracker** provides a user-friendly interface to participate in Ethereum-based actions.The purpose of this contract is to track the income and outcome of a given user. For this contract, we are going to target the Solana blockchain. Thus, we define the data structure **Record** that will be transpile to a PDA Account base on the seeds defined in the solana extension. In addition, the contract defines three methods, also known as instruction; through this method, we add behavior.
+The **Budget Tracker** provides a user-friendly interface to participate in Ethereum-based actions.The purpose of this contract is to track the income and outcome of a given user. For this contract, we are going to target the Solana blockchain. Thus, we define the data structure **Record** that will be transpile to a PDA Account base on the seeds defined in the solana extension. In addition, the contract defines three methods, also known as instruction; through this method, we add behavior.
 ## Features
 
-- create_user_record: To call once per account. Initialize a Record account. The total_balance of the account will be set to 0..
+- create_user_record: To call once per account. Initialize a Record account. The total_balance of the account will be set to 0.
 
 - register_income: Register income of the user.
 
