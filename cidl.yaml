@@ -1,0 +1,100 @@
+cidl: "0.8"
+info:
+  name: budget_tracker
+  title: Budget Tracker
+  version: 0.0.1
+  summary: |-
+    The purpose of this contract is to track the income and outcome of a given user. For this contract, we are going to 
+    target the Solana blockchain. Thus, we define the data structure **Record** that will be transpile to a PDA Account 
+    base on the seeds defined in the solana extension. In addition, the contract defines three methods, also known as 
+    instruction; through this method, we add behavior.
+    
+    Some useful links:
+    
+      - [Blockchain Extensions](https://docs.codigo.ai/category/blockchain-extensions)
+      - [Learning the Basics](https://docs.codigo.ai/código-interface-description-language/learning-the-basics)
+      - [Building Solana Program with CIDL: A Comprehensive Guide Part I](https://docs.codigo.ai/guides/part-1-building-solana-programs)
+  contact:
+    name: Tracker
+    web: https://codigo.ai
+    email: j.vivekvmasi@gmail.com
+    git: https://github.com/vivekjami
+  license:
+    name: MIT
+    url: https://opensource.org/license/mit
+types:
+  Record:
+    summary: Through this data structure we will store the relevant information to track the income and outcome of a given user.
+    solana:
+      owner: self
+      seeds:
+        - name: record
+        - name: signer
+          type: sol:pubkey
+    fields:
+      - name: name
+        type: string
+        solana:
+          attributes: [ cap:50 ]
+        description: The name of the user.
+      # TODO: 1 - Complete the definition of the Record data structure
+      # Add the following fields
+      #   - moves of type u16
+      #   - outcome of type u32
+      #   - income of type u32
+      #   - total_balance of type i64
+      - name: moves
+        type: u16
+        description: The number of moves made by the user.
+      - name: outcome
+        type: u32
+        description: The total outcome amount of the user.
+      - name: income
+        type: u32
+        description: The total income amount of the user.
+      - name: total_balance
+        type: i64
+        description: The total balance of the user.
+methods:
+  - name: create_user_record
+    summary: To call once per account. Initialize a Record account. The total_balance of the account will be set to 0.
+    inputs:
+      - name: user_record
+        type: Record
+        solana:
+          attributes: [ init_if_needed ]
+      - name: user_name
+        type: string
+        description: The username to be assigned to the Record.name property
+
+  # TODO: 2 - Define the register_income method
+  #  - Add the following inputs
+  #  - record of type Record, and the attribute mut
+  #  - amount of type u32
+  - name: register_income
+    summary: Register income for a user.
+    inputs:
+      - name: record
+        type: Record
+        solana:
+          attributes: [ mut ]
+        description: The user record to update.
+      - name: amount
+        type: u32
+        description: The amount of income to register.
+
+  # TODO: 3 - Define the register_outcome method
+  #  - Add the following inputs
+  #  - record of type Record, and the attribute mut
+  #  - amount of type u32
+  - name: register_outcome
+    summary: Register outcome for a user.
+    inputs:
+      - name: record
+        type: Record
+        solana:
+          attributes: [ mut ]
+        description: The user record to update.
+      - name: amount
+        type: u32
+        description: The amount of outcome to register.
