@@ -17,8 +17,8 @@ info:
   contact:
     name: Tracker
     web: https://codigo.ai
-    email: j.vivekvmasi@gmail.com
-    git: https://github.com/vivekjami
+    email: support@codigo.ai
+    git: https://github.com/Codigo-io/platform
   license:
     name: MIT
     url: https://opensource.org/license/mit
@@ -45,16 +45,16 @@ types:
       #   - total_balance of type i64
       - name: moves
         type: u16
-        description: The number of moves made by the user.
+        description: Number incomes/outcomes registered.
       - name: outcome
         type: u32
-        description: The total outcome amount of the user.
+        description: Sum of all outcomes.
       - name: income
         type: u32
-        description: The total income amount of the user.
+        description: Sum of all incomes.
       - name: total_balance
         type: i64
-        description: The total balance of the user.
+        description: The current balance of the user
 methods:
   - name: create_user_record
     summary: To call once per account. Initialize a Record account. The total_balance of the account will be set to 0.
@@ -72,29 +72,28 @@ methods:
   #  - record of type Record, and the attribute mut
   #  - amount of type u32
   - name: register_income
-    summary: Register income for a user.
+    summary: Register the given amount as an income for the given record account. The total total_balance of the account will be increased.
     inputs:
-      - name: record
-        type: Record
-        solana:
-          attributes: [ mut ]
-        description: The user record to update.
-      - name: amount
-        type: u32
-        description: The amount of income to register.
+    - name: user_record
+      type: Record
+      solana:
+        attributes: [ mut ]
+    - name: amount
+      type: u32
+      description: The amount to be registered as the income.
 
   # TODO: 3 - Define the register_outcome method
   #  - Add the following inputs
   #  - record of type Record, and the attribute mut
   #  - amount of type u32
   - name: register_outcome
-    summary: Register outcome for a user.
+    summary: Register the given amount as an outcome for the given record account. The total total_balance of the account will be decreased.
     inputs:
-      - name: record
-        type: Record
-        solana:
-          attributes: [ mut ]
-        description: The user record to update.
-      - name: amount
-        type: u32
-        description: The amount of outcome to register.
+    - name: user_record
+      type: Record
+      description: The user record account
+      solana:
+        attributes: [ mut ]
+    - name: amount
+      type: u32
+      description: Number to be added to the outcome accumulator
